@@ -33,14 +33,14 @@ const Navbar = () => {
           </nav>
 
           {/* Login button or Profile */}
-          <div className="hidden sm:block w-9 h-9 rounded-full p-[2px] bg-gradient-to-r from-orange-700 to-yellow-500">
+          {/* <div className="hidden sm:block w-9 h-9 rounded-full p-[2px] bg-gradient-to-r from-orange-700 to-yellow-500">
             <div className="w-full h-full rounded-full bg-[#0f172a] flex items-center justify-center text-white font-bold">
               A
             </div>
-          </div>
-          {/* <button className="hidden sm:block px-4 py-1.5 cursor-pointer bg-orange-500 hover:bg-orange-600 text-white rounded transition-colors duration-200">
+          </div> */}
+          <Link href="/register" className="hidden sm:block px-4 py-1.5 cursor-pointer bg-orange-500 hover:bg-orange-600 text-white rounded transition-colors duration-200">
             Login
-          </button> */}
+          </Link>
 
           {/* Hamburger icon for small devices */}
           <div className="sm:hidden cursor-pointer">

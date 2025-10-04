@@ -10,9 +10,11 @@ export const metadata = {
 const RootLayout = ({ children }) => {
   return (
     <html lang="en" data-theme="dark">
-      <body cz-shortcut-listen="true">
+      <body cz-shortcut-listen="true" className="flex flex-col min-h-screen">
         <Navbar />
-        {children}
+          <div className="flex-1">
+            {children}
+          </div>
         <Footer />
       </body>
     </html>
