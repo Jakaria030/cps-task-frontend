@@ -1,3 +1,4 @@
+import Footer from "./components/footer/Footer";
 import Navbar from "./components/header/Navbar";
 import "./globals.css";
 
@@ -12,6 +13,7 @@ const RootLayout = ({ children }) => {
       <body cz-shortcut-listen="true">
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
