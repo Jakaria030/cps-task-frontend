@@ -8,7 +8,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 py-4 sm:px-8 sm:py-6">
         <div className="flex items-center justify-between gap-5">
           {/* Logo */}
-          <Logo />
+          <Logo textSize={"text-lg sm:text-xl lg:text-2xl"} />
 
           {/* Nav links */}
           <nav className="hidden sm:flex items-center justify-center gap-5">
