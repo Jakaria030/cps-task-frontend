@@ -4,27 +4,21 @@ import Logo from "../Logo";
 
 const Navbar = () => {
   return (
-    <header className="border-b border-slate-500">
+    <header className="border-b border-slate-500 sticky top-0 z-50 backdrop-blur-3xl">
       <div className="max-w-7xl mx-auto px-4 py-4 sm:px-8 sm:py-6">
         <div className="flex items-center justify-between gap-5">
           {/* Logo */}
-          <div className="md:basis-1/3">
+          <div className="basis-1/3">
             <Logo textSize={"text-lg sm:text-xl lg:text-2xl"} />
           </div>
 
           {/* Nav links */}
-          <nav className="md:basis-1/3 hidden sm:flex items-center justify-center gap-3 lg:gap-5">
+          <nav className="basis-1/3 hidden sm:flex items-center justify-center gap-5">
             <Link
               href="/"
               className="hover:text-orange-500 transition-colors duration-200 cursor-pointer"
             >
               Home
-            </Link>
-            <Link
-              href="/courses"
-              className="hover:text-orange-500 transition-colors duration-200 cursor-pointer"
-            >
-              Courses
             </Link>
             <Link
               href="/my-learning"
@@ -35,14 +29,14 @@ const Navbar = () => {
           </nav>
 
           {/* Login button or Profile */}
-          <div className="md:basis-1/3 flex justify-end">
+          <div className="basis-1/3 flex justify-end">
             {/* <div className="hidden sm:block w-9 h-9 rounded-full p-[2px] bg-gradient-to-r from-orange-700 to-yellow-500">
             <div className="w-full h-full rounded-full bg-[#0f172a] flex items-center justify-center text-white font-bold">
               A
             </div>
           </div> */}
             <Link
-              href="/register"
+              href="/login"
               className="hidden sm:inline-block px-4 py-1.5 cursor-pointer bg-orange-500 hover:bg-orange-600 text-white rounded transition-colors duration-200"
             >
               Login

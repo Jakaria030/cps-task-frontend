@@ -50,7 +50,7 @@ const HomePage = () => {
         <div className="absolute top-0 left-0 size-80 rounded-full bg-violet-500/10 blur-3xl"></div>
         <div className="absolute bottom-0 right-0 size-80 rounded-full bg-teal-400/5 blur-3xl"></div>
 
-        <div className="border-y border-slate-500 py-16 px-6 relative z-10">
+        <div className="border-y border-slate-500 py-16 px-4 sm:px-8 relative z-10">
           <div className="max-w-7xl mx-auto text-center">
             <EnrollmentCountdown
               startDate="2025-10-05T08:00:00"
