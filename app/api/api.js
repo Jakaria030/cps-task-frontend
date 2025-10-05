@@ -116,3 +116,27 @@ export const getMyCourses = async (token) => {
     return { data: [] };
   }
 };
+
+export const getCourseModules = async (courseId, token) => {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/courses/${courseId}?populate[modules]=true`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    if (!res.ok) {
+      console.error("Failed to fetch course:", res.statusText);
+      return null;
+    }
+
+    const data = await res.json();
+    return data.data || null;
+  } catch (err) {
+    console.error("Error fetching course:", err);
+    return null;
+  }
+};

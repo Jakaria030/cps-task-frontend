@@ -1,5 +1,8 @@
-const page = () => {
-  return <div>Hello</div>;
+import MyModules from "@/app/components/MyModules";
+
+const MyLearningCoursePage = ({ params }) => {
+  const { id } = params;
+  return <MyModules courseId={id} />;
 };
 
-export default page;
+export default MyLearningCoursePage;
