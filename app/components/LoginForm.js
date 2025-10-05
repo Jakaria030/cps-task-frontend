@@ -37,7 +37,6 @@ const LoginForm = () => {
 
     try {
       const res = await loginUser(form);
-      console.log(res);
       if (res.error) {
         errorAlert("Invalid credentials. Try again.");
       } else {

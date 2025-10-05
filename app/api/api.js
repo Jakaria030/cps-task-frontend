@@ -88,3 +88,31 @@ export const loginUser = async ({ identifier, password }) => {
     return { error: error.message };
   }
 };
+
+export const getMyCourses = async (token) => {
+  try {
+    const res = await fetch(
+      `${STRAPI_URL}/api/users/me?populate[courses][populate][thumbnail][fields][0]=alternativeText&populate[courses][populate][thumbnail][fields][1]=url`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+
+    if (!res.ok) {
+      console.error("Failed to fetch my courses:", res.status, res.statusText);
+      return { data: [] };
+    }
+
+    const resultData = await res.json();
+
+    const courses = resultData?.courses || [];
+    const data = courses.filter((course) => course.publishedAt !== null);
+
+    return { data };
+  } catch (error) {
+    console.error("Error fetching API:", error);
+    return { data: [] };
+  }
+};
