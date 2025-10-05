@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const CourseCard = ({ image, title, description, price }) => {
+const CourseCard = ({ documentId, image, title, description, price }) => {
   return (
     <div
       className="max-w-xl lg:max-w-full mx-auto bg-slate-800 rounded-lg shadow-md overflow-hidden flex flex-col border border-slate-700 
@@ -18,7 +18,9 @@ const CourseCard = ({ image, title, description, price }) => {
 
       {/* Course Info */}
       <div className="p-4 flex flex-col flex-1">
-        <h3 className="text-xl font-semibold text-center text-white">{title}</h3>
+        <h3 className="text-xl font-semibold text-center text-white">
+          {title}
+        </h3>
         <p className="text-slate-300 text-center mt-3">{description}</p>
         <p className="my-4 flex justify-center items-baseline text-yellow-400">
           <span className="text-5xl font-bold">{price}/-</span>

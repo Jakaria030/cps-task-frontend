@@ -1,26 +1,23 @@
-import image2 from "../public/bootcamp.jpg";
-import image1 from "../public/cp-course.jpg";
+import {
+  getAchievements,
+  getCourses,
+  getEnrollmentTime,
+  STRAPI_URL,
+} from "./api/api";
 import CourseCard from "./components/CourseCard";
 import EnrollmentCountdown from "./components/EnrollmentCountDown";
 
-const HomePage = () => {
-  const courses = [
-    {
-      id: 1,
-      image: image1,
-      title: "Web Development Bootcamp",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore assumenda, ex error inventore fugiat repellat quam culpa eligendi consequatur aspernatur ullam necessitatibus exercitationem consectetur deserunt alias eveniet dicta sit perferendis.",
-      price: 49,
-    },
-    {
-      id: 2,
-      image: image2,
-      title: "Data Structures & Algorithms",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore assumenda, ex error inventore fugiat repellat quam culpa eligendi consequatur aspernatur ullam necessitatibus exercitationem consectetur deserunt alias eveniet dicta sit perferendis.",
-      price: 39,
-    },
+const HomePage = async () => {
+  const { data: courses } = await getCourses();
+  const { data } = await getEnrollmentTime();
+  const enrollmentTime = data[0];
+  const { data: achievements } = await getAchievements();
+
+  const colors = [
+    "text-orange-500",
+    "text-yellow-400",
+    "text-teal-400",
+    "text-sky-400",
   ];
 
   return (
@@ -32,10 +29,11 @@ const HomePage = () => {
 
         <div className="max-w-7xl mx-auto px-4 pt-8 sm:px-8 sm:pt-16 md:pt-28">
           <div className="grid gap-8 md:gap-16 grid-cols-1 lg:grid-cols-2">
-            {courses.map((course) => (
+            {courses?.map((course) => (
               <CourseCard
-                key={course.id}
-                image={course.image}
+                key={course.documentId}
+                documentId={course.documentId}
+                image={`${STRAPI_URL}${course.thumbnail.url}`}
                 title={course.title}
                 description={course.description}
                 price={course.price}
@@ -53,8 +51,8 @@ const HomePage = () => {
         <div className="border-y border-slate-500 py-16 px-4 sm:px-8 relative z-10">
           <div className="max-w-7xl mx-auto text-center">
             <EnrollmentCountdown
-              startDate="2025-10-05T08:00:00"
-              endDate="2025-10-20T23:59:59"
+              startDate={enrollmentTime.startTime}
+              endDate={enrollmentTime.endTime}
             />
           </div>
         </div>
@@ -72,22 +70,19 @@ const HomePage = () => {
           </p>
 
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="bg-slate-800 p-6 rounded-lg shadow hover:shadow-lg transition">
-              <h3 className="text-4xl font-bold text-orange-500 mb-2">4</h3>
-              <p className="text-gray-400">Codeforces Expert</p>
-            </div>
-            <div className="bg-slate-800 p-6 rounded-lg shadow hover:shadow-lg transition">
-              <h3 className="text-4xl font-bold text-yellow-400 mb-2">29</h3>
-              <p className="text-gray-400">Codeforces Specialist</p>
-            </div>
-            <div className="bg-slate-800 p-6 rounded-lg shadow hover:shadow-lg transition">
-              <h3 className="text-4xl font-bold text-teal-400 mb-2">106</h3>
-              <p className="text-gray-400">Codeforces Pupil</p>
-            </div>
-            <div className="bg-slate-800 p-6 rounded-lg shadow hover:shadow-lg transition">
-              <h3 className="text-4xl font-bold text-sky-400 mb-2">15</h3>
-              <p className="text-gray-400">BD Big Tech</p>
-            </div>
+            {achievements.map((achievement, indx) => {
+              return (
+                <div
+                  key={achievement.documentId}
+                  className="bg-slate-800 p-6 rounded-lg shadow hover:shadow-lg transition"
+                >
+                  <h3 className={`${colors[indx]} text-4xl font-bold mb-2`}>
+                    {achievement.count}
+                  </h3>
+                  <p className="text-gray-400">{achievement.title}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
