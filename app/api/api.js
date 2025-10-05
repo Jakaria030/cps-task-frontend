@@ -66,3 +66,25 @@ export const registerUser = async ({ username, email, password }) => {
     return { error: error.message };
   }
 };
+
+export const loginUser = async ({ identifier, password }) => {
+  try {
+    const res = await fetch(`${STRAPI_URL}/api/auth/local`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ identifier, password }),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      return { error: data.error?.message || "Login failed" };
+    }
+
+    return { user: data.user, jwt: data.jwt };
+  } catch (error) {
+    return { error: error.message };
+  }
+};
