@@ -44,3 +44,25 @@ export const getAchievements = async () => {
     return null;
   }
 };
+
+export const registerUser = async ({ username, email, password }) => {
+  try {
+    const res = await fetch(`${STRAPI_URL}/api/auth/local/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, email, password }),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      return { error: data.error?.message || "Registration failed" };
+    }
+
+    return { user: data.user, jwt: data.jwt };
+  } catch (error) {
+    return { error: error.message };
+  }
+};

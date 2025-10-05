@@ -1,3 +1,4 @@
+import { ToastContainer } from "react-toastify";
 import Footer from "./components/footer/Footer";
 import Navbar from "./components/header/Navbar";
 import "./globals.css";
@@ -11,6 +12,7 @@ const RootLayout = ({ children }) => {
   return (
     <html lang="en" data-theme="dark">
       <body cz-shortcut-listen="true">
+        <ToastContainer />
         <Navbar />
         {children}
         <Footer />
