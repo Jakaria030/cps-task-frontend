@@ -33,7 +33,7 @@ export default function EnrollmentCountdown({ startDate, endDate }) {
   }, [endDate]);
 
   return (
-    <>
+    <div className="max-w-7xl mx-auto px-4 sm:px-8 py-8 sm:py-16 md:py-28 text-center">
       <h2 className="text-3xl md:text-4xl font-bold mb-2 text-white">
         Course Enrollment
       </h2>
@@ -41,21 +41,21 @@ export default function EnrollmentCountdown({ startDate, endDate }) {
         Enrollment is open for a limited time. Don't miss out!
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-white">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {/* Start time */}
-        <div className="bg-slate-800 p-6 rounded-lg shadow flex-1">
+        <div className="bg-slate-800 p-6 rounded-lg shadow">
           <h3 className="font-semibold mb-2">Start Time</h3>
           <p>{new Date(startDate).toLocaleString()}</p>
         </div>
 
         {/* End time */}
-        <div className="bg-slate-800 p-6 rounded-lg shadow flex-1">
+        <div className="bg-slate-800 p-6 rounded-lg shadow">
           <h3 className="font-semibold mb-2">End Time</h3>
           <p>{new Date(endDate).toLocaleString()}</p>
         </div>
 
         {/* Countdown */}
-        <div className="sm:col-span-2 md:col-span-1 bg-slate-800 p-6 rounded-lg shadow flex-1">
+        <div className="sm:col-span-2 md:col-span-1 bg-slate-800 p-6 rounded-lg shadow">
           <h3 className="font-semibold mb-2">Time Left</h3>
           <p className="text-2xl font-bold">
             {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m{" "}
@@ -63,6 +63,6 @@ export default function EnrollmentCountdown({ startDate, endDate }) {
           </p>
         </div>
       </div>
-    </>
+    </div>
   );
 }
