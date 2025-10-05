@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Logo from "../Logo";
 import LoginButtonOrProfile from "./LoginButtonOrProfile";
+import PrivateNavLink from "./PrivateNavLink";
 
 const Navbar = () => {
   return (
@@ -8,7 +9,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 py-4 sm:px-8 sm:py-6">
         <div className="flex items-center justify-between gap-5">
           {/* Logo */}
-          <div className="basis-1/3">
+          <div className="sm:basis-1/3">
             <Logo textSize={"text-lg sm:text-xl lg:text-2xl"} />
           </div>
 
@@ -20,12 +21,7 @@ const Navbar = () => {
             >
               Home
             </Link>
-            <Link
-              href="/my-learning"
-              className="hover:text-orange-500 transition-colors duration-200 cursor-pointer"
-            >
-              My Learning
-            </Link>
+            <PrivateNavLink />
           </nav>
 
           {/* Login button or Profile */}
